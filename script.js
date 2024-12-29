@@ -31,7 +31,7 @@ window.onload = function () {
         item.className = "item";
         const img = document.createElement("img");
         img.src = `./assets/img1%20(${i}).jpg`;
-        img.laoding = "lazy";
+        img.loading = "lazy";
         item.appendChild(img);
         gallery.appendChild(item);
     }
@@ -61,7 +61,7 @@ window.onload = function () {
         });
 
         item.addEventListener("mouseout", function () {
-            previewImage.src = "./assets/img1.jpg";
+            previewImage.src = "./assets/img1.png";
             gsap.to(item, {
                 x: 0,
                 y: 0,

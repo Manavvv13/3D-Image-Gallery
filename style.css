@@ -5,21 +5,25 @@
 }
 @font-face {
     font-family: "Monument";
-    src: url(./MonumentExtended-Regular.ttf);
+    src: url(./Bread\ Mate\ 400.otf);
 }
 html , body{
     height: 100vh;
     width: 100vw;
+ 
     font-family: "Monument";
 }
-
+body{
+    height: 200vh;
+    overflow-x: hidden;
+}
 nav,footer {
     position: fixed;
     width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 2em;
-    font-size: 14px;
+    font-size: 25px;
     font-weight: 500;
     color: #000;
 
@@ -43,7 +47,7 @@ footer{
 
 .gallery{
     position: absolute;
-    top: 22.5%;
+    top: 18%;
     left: 50%;
     transform-style: preserve-3d;
     transform: translateX(-50%) rotateX(55deg);
@@ -77,3 +81,16 @@ img {
     height: 200px;
     z-index: 0;
 }
+
+::-webkit-scrollbar {
+    width: .4em;
+    
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #5c5c5c;
+    border-radius: 100vw;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #252525;
+  }

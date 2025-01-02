@@ -1,3 +1,5 @@
+gsap.registerPlugin(ScrollTrigger);
+
 window.onload = function () {
     const gallery = document.querySelector(".gallery");
     const previewImage = document.querySelector(".preview-img img");
@@ -31,7 +33,6 @@ window.onload = function () {
         img.src = `./assets/img1%20(${i}).jpg`;
 
         img.loading = "lazy";
-
         item.appendChild(img);
         gallery.appendChild(item);
     }
@@ -61,14 +62,7 @@ window.onload = function () {
         });
 
         item.addEventListener("mouseout", function () {
-
-            previewImage.src = "./assets/img1.png";
-
-            previewImage.src = "./assets/img1.png"; 
-            previewImage.onerror = () => {
-                previewImage.src = "./assets/OBSCURA Transparent.png"; 
-            };
-
+            previewImage.src = "./assets/OBSCURA Transparent.png";
             gsap.to(item, {
                 x: 0,
                 y: 0,
@@ -80,31 +74,31 @@ window.onload = function () {
     });
 
     ScrollTrigger.create({
-        trigger: "body",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 2,
-        onRefresh: setupRotation,
+        trigger: document.body, 
+        start: "top top",       
+        end: "bottom bottom",   
+        scrub: 3,               
+        onRefresh: () => setupRotation(items, angleIncrement),
         onUpdate: (self) => {
             const rotationProgress = self.progress * 360;
             items.forEach((item, index) => {
                 const currentAngle = index * angleIncrement - 90 + rotationProgress;
-                gsap.to(item, {
+                gsap.set(item, {
                     rotationZ: currentAngle,
-                    duration: 1,
-                    ease: "power3.out",
+                    duration:0.8,
+                    ease: "power2.out",
                     overwrite: "auto",
                 });
             });
         },
     });
-
-    function setupRotation() {
-        items.forEach((item, index) => {
-            const initialAngle = index * angleIncrement - 90;
-            gsap.set(item, {
-                rotationZ: initialAngle,
-            });
-        });
-    }
 };
+
+function setupRotation(items, angleIncrement) {
+    items.forEach((item, index) => {
+        const initialAngle = index * angleIncrement - 90;
+        gsap.set(item, {
+            rotationZ: initialAngle,
+        });
+    });
+}

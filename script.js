@@ -2,7 +2,6 @@ window.onload = function () {
     const gallery = document.querySelector(".gallery");
     const previewImage = document.querySelector(".preview-img img");
 
-    // Mouse movement for gallery rotation
     document.addEventListener("mousemove", function (event) {
         const x = event.clientX;
         const y = event.clientY;
@@ -25,17 +24,14 @@ window.onload = function () {
         });
     });
 
-    // Create gallery items dynamically
     for (let i = 1; i <= 111; i++) {
         const item = document.createElement("div");
         item.className = "item";
         const img = document.createElement("img");
         img.src = `./assets/img1%20(${i}).jpg`;
-<<<<<<< Updated upstream
+
         img.loading = "lazy";
-=======
-        img.loading = "lazy"; // Corrected typo
->>>>>>> Stashed changes
+
         item.appendChild(img);
         gallery.appendChild(item);
     }
@@ -65,15 +61,14 @@ window.onload = function () {
         });
 
         item.addEventListener("mouseout", function () {
-<<<<<<< Updated upstream
+
             previewImage.src = "./assets/img1.png";
-=======
-            previewImage.src = "./assets/img1.png"; // Reset to default image
+
+            previewImage.src = "./assets/img1.png"; 
             previewImage.onerror = () => {
-                previewImage.src = "./assets/OBSCURA Transparent.png"; // Fallback if default fails
+                previewImage.src = "./assets/OBSCURA Transparent.png"; 
             };
 
->>>>>>> Stashed changes
             gsap.to(item, {
                 x: 0,
                 y: 0,
@@ -84,7 +79,6 @@ window.onload = function () {
         });
     });
 
-    // ScrollTrigger for gallery rotation
     ScrollTrigger.create({
         trigger: "body",
         start: "top top",
@@ -105,7 +99,6 @@ window.onload = function () {
         },
     });
 
-    // Setup rotation
     function setupRotation() {
         items.forEach((item, index) => {
             const initialAngle = index * angleIncrement - 90;
